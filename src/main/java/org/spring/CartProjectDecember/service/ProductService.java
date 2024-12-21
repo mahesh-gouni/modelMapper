@@ -37,6 +37,8 @@ public class ProductService {
         ProductEntity productEntity= productRepository.findById(prodId).orElseThrow();
         Product product = modelMap.entityToModel(productEntity);
 
+
+
         return product;
     }
 
