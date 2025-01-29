@@ -17,11 +17,13 @@ public class ProductService {
       private  ProductRepository productRepository;
       @Autowired
       private ModelMap modelMap;
+
    public void addingProduct(Product product) {
       // System.out.println("product at service"+product);
       ProductEntity productEntity= this.modelMap.modelToEntity(product);
       // System.out.println("converted by mapper"+productEntity);
       productRepository.save(productEntity);
+    // productRepository.save(product);
 
 
    }

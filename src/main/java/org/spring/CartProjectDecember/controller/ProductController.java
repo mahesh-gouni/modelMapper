@@ -11,21 +11,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class ProductController {
+@CrossOrigin("*")
+public class ProductController  {
     @Autowired
     private ProductService productServices;
 
     @PostMapping("/add")
     public void addingProduct(@RequestBody Product product){
-       // System.out.println("prodcts at controller"+product);
+       System.out.println("prodcts at controller"+product);
         productServices.addingProduct(product);
+
 
     }
     @GetMapping("/listOfProducts")
     public ResponseEntity< List<Product>> gettingListOfProducts(){
         return new ResponseEntity<>( productServices.gettingListOfProducts(), HttpStatus.FOUND);
     }
-    @GetMapping("/product{prodId}")
+    @GetMapping("/product/{prodId}")
     public ResponseEntity< Product> gettingProductById(@PathVariable int prodId ){
        Product product=  productServices.gettingProductById(prodId);
        if (product!= null ){
